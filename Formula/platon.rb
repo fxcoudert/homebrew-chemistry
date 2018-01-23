@@ -4,7 +4,7 @@ class Platon < Formula
   url "http://www.cryst.chem.uu.nl/spek/xraysoft/unix/platon.tar.gz"
   version "0"
 
-  depends_on :fortran
+  depends_on "gcc" # for gfortran
   depends_on :x11
 
   def install
