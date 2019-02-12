@@ -9,8 +9,8 @@ class Platon < Formula
 
   def install
     system "gunzip", "platon.f.gz", "xdrvr.c.gz"
-    system ENV.fc, "-o", "platon", "platon.f", "xdrvr.c",
-                   "-I#{MacOS::X11.include}", "-L#{MacOS::X11.lib}", "-lX11"
+    system "gfortran", "-o", "platon", "platon.f", "xdrvr.c",
+                       "-I#{MacOS::X11.include}", "-L#{MacOS::X11.lib}", "-lX11"
     bin.install "platon"
 
     rm_f "platon"
