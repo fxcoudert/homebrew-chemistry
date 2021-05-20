@@ -12,7 +12,6 @@ class GracePatched < Formula
   depends_on "libpng"
   depends_on "openmotif"
   depends_on "pdflib-lite"
-  depends_on :x11
 
   # Patch for instantaneous update and other features
   resource "patch" do
@@ -22,6 +21,8 @@ class GracePatched < Formula
 
   def install
     ENV.O1 # https://github.com/Homebrew/homebrew/issues/27840#issuecomment-38536704
+    ENV.append "CFLAGS", "-Wno-implicit-function-declaration"
+
     system "./configure", "--disable-debug",
                           "--prefix=#{prefix}",
                           "--enable-grace-home=#{prefix}"
